@@ -16,8 +16,17 @@ qt_add_executable(appVehicleHMI
 
 qt_add_qml_module(appVehicleHMI
     URI VehicleHMI
+
     QML_FILES
         Main.qml
+
+    SOURCES
+        vehiclestate.h
+        vehiclestate.cpp
+)
+
+target_include_directories(appVehicleHMI
+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
