@@ -7,11 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS SerialBus)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appVehicleHMI
     main.cpp
+    CanReceiver.h
+    CanReceiver.cpp
+    VehicleCanProtocol.h
 )
 
 qt_add_qml_module(appVehicleHMI
@@ -21,8 +25,10 @@ qt_add_qml_module(appVehicleHMI
         Main.qml
 
     SOURCES
-        vehiclestate.h
-        vehiclestate.cpp
+        VehicleState.h
+        VehicleState.cpp
+        SOURCES VehicleCanProtocol.h
+        SOURCES CanReceiver.h CanReceiver.cpp
 )
 
 target_include_directories(appVehicleHMI
@@ -41,8 +47,12 @@ set_target_properties(appVehicleHMI PROPERTIES
 )
 
 target_link_libraries(appVehicleHMI
-    PRIVATE Qt6::Quick
+    PRIVATE
+    Qt6::Quick
+    Qt6::SerialBus
 )
+
+target_link_libraries(appVehicleHMI PRIVATE Qt6::SerialBus)
 
 include(GNUInstallDirs)
 install(TARGETS appVehicleHMI

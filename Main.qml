@@ -10,13 +10,13 @@ Window {
     minimumHeight: 270
 
     visible: true
-    title: "Vehicle HMI - local demo"
+    title: "Vehicle HMI - CAN"
     color: "#151b23"
 
     Text {
         anchors.centerIn: parent
 
-        text: root.vehicleState.speedKph.toFixed(0) + " Km/h"
+        text: root.vehicleState.speedKph.toFixed(2) + " Km/h"
         color: "#e6edf3"
         font.pixelSize: 64
     }

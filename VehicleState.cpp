@@ -1,4 +1,4 @@
-#include "vehiclestate.h"
+#include "VehicleState.h"
 #include <QDebug>
 
 VehicleState::VehicleState(QObject *parent) : QObject{parent}
