@@ -1,5 +1,9 @@
 find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 SerialBus)
 
+list(APPEND QML_IMPORT_PATH "${CMAKE_CURRENT_BINARY_DIR}/qml")
+list(REMOVE_DUPLICATES QML_IMPORT_PATH)
+set(QML_IMPORT_PATH "${QML_IMPORT_PATH}" CACHE STRING "QML import paths for Qt Creator" FORCE)
+
 qt_add_executable(VehicleSimulator main.cpp)
 
 qt_add_qml_module(VehicleSimulator
