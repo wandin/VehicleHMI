@@ -16,8 +16,20 @@ Window {
     Text {
         anchors.centerIn: parent
 
-        text: root.vehicleState.speedKph.toFixed(2) + " Km/h"
-        color: "#e6edf3"
-        font.pixelSize: 64
+        readonly property bool hasSample: root.vehicleState.hasSpeedSample
+
+        text: hasSample ? root.vehicleState.speedKph.toFixed(2) + " km/h"
+                        : qsTr("Waiting speed's transmission")
+        font.pixelSize: hasSample ? 64 : 26
+        color: hasSample ? "#e6edf3" : "#a5b2c2"
+    }
+
+    Speedometer {
+        anchors.centerIn: parent
+        width: Math.min(parent.width, parent.height) * 0.9
+        height: width
+
+        speedKph: root.vehicleState.speedKph
+        hasSample: root.vehicleState.hasSpeedSample
     }
 }

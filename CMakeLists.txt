@@ -23,11 +23,12 @@ qt_add_qml_module(appVehicleHMI
 
     QML_FILES
         Main.qml
+        Speedometer.qml
 
     SOURCES
         VehicleState.h
         VehicleState.cpp
-        SOURCES VehicleCanProtocol.h
+        SOURCES VehicleCanProtocol.h VehicleCanSpeedEncoder.h
         SOURCES CanReceiver.h CanReceiver.cpp
 )
 
@@ -60,3 +61,5 @@ install(TARGETS appVehicleHMI
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+add_subdirectory(simulator)

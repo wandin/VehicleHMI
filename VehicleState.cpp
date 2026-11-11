@@ -19,11 +19,23 @@ void VehicleState::SetSpeedKph(double speedKph)
         return;
     }
 
-    if(m_speedKph == speedKph)
+    const bool speedChanged = m_speedKph != speedKph;
+    m_speedKph = speedKph;
+
+    if(!m_hasSpeedSample)
     {
-        return;
+        m_hasSpeedSample = true;
+        emit hasSpeedSampleChanged();
     }
 
-    m_speedKph = speedKph;
-    emit speedKphChanged();
+    if(speedChanged)
+    {
+        emit speedKphChanged();
+    }
+
+}
+
+bool VehicleState::hasSpeedSample() const
+{
+    return m_hasSpeedSample;
 }
