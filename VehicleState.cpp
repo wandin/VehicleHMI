@@ -1,4 +1,5 @@
 #include "VehicleState.h"
+#include <cmath>
 #include <QDebug>
 
 VehicleState::VehicleState(QObject *parent) : QObject{parent}
@@ -11,7 +12,7 @@ double VehicleState::speedKph() const
     return m_speedKph;
 }
 
-void VehicleState::SetSpeedKph(double speedKph)
+void VehicleState::setSpeedKph(double speedKph)
 {
     if(!std::isfinite(speedKph) || speedKph < 0.0)
     {

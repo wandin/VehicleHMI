@@ -3,7 +3,6 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QTimer>
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +15,7 @@ int main(int argc, char *argv[])
         &canReceiver,
         &CanReceiver::speedReceived,
         &vehicleState,
-        &VehicleState::SetSpeedKph);
+        &VehicleState::setSpeedKph);
 
     if(!canReceiver.start(QStringLiteral("vcan0")))
     {

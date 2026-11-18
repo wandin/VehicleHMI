@@ -1,7 +1,7 @@
 #include "CanReceiver.h"
 #include "VehicleCanProtocol.h"
 #include <QCanBus>
-#include <qdebug.h>
+#include <QDebug>
 
 CanReceiver::CanReceiver(QObject *parent)
     : QObject{parent}
@@ -42,7 +42,7 @@ bool CanReceiver::start(const QString &interfaceName)
         m_device,
         &QCanBusDevice::framesReceived,
         this,
-        &CanReceiver::processRReceivedFrames);
+        &CanReceiver::processReceivedFrames);
 
     QObject::connect(
         m_device,
@@ -64,7 +64,7 @@ bool CanReceiver::start(const QString &interfaceName)
 
 }
 
-void CanReceiver::processRReceivedFrames()
+void CanReceiver::processReceivedFrames()
 {
     const auto frames = m_device->readAllFrames();
 

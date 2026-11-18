@@ -1,6 +1,3 @@
-#ifndef CANRECEIVER_H
-#define CANRECEIVER_H
-
 #pragma once
 
 #include <QCanBusDevice>
@@ -20,10 +17,8 @@ signals:
     void speedReceived(double speedKph);
 
 private:
-    void processRReceivedFrames();
+    void processReceivedFrames();
     void handleError(QCanBusDevice::CanBusError error);
 
     QCanBusDevice *m_device = nullptr;
 };
-
-#endif // CANRECEIVER_H

@@ -1,5 +1,4 @@
-#ifndef VEHICLESTATE_H
-#define VEHICLESTATE_H
+#pragma once
 
 #include <QObject>
 #include <QtQml/qqmlregistration.h>
@@ -17,7 +16,7 @@ public:
     explicit VehicleState(QObject *parent = nullptr);
 
     double speedKph() const;
-    void SetSpeedKph(double speedKph);
+    void setSpeedKph(double speedKph);
 
     bool hasSpeedSample() const;
 
@@ -27,9 +26,7 @@ signals:
     void hasSpeedSampleChanged();
 
 private:
-    double m_speedKph = 0.0f;
+    double m_speedKph = 0.0;
 
     bool m_hasSpeedSample = false;
 };
-
-#endif // VEHICLESTATE_H

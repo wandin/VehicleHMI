@@ -4,7 +4,7 @@
 
 namespace VehicleCanProtocol
 {
-inline constexpr std::uint32_t SpeedFrameId= 0x100;
+inline constexpr std::uint32_t SpeedFrameId = 0x100;
 inline constexpr int SpeedPayloadBytes = 2;
 
 inline constexpr int SpeedCountsPerKph = 100;
